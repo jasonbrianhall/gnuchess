@@ -37,8 +37,6 @@
 #include "frontend/common.h"
 #include "gettext.h"
 
-#define _(str) gettext (str)
-
 unsigned char lzArray[65536];
 BitBoard BitPosArray[64];
 BitBoard NotBitPosArray[64];
@@ -314,7 +312,7 @@ int main (int argc, char *argv[])
        errno = 0; /* zero error indicator */
        opt_memory = strtol (optarg, &endptr, 10);
        if ( errno != 0 || *endptr != '\0' ){
-         printf(_("Memory out of Range or Invalid\n"));
+         printf("Memory out of Range or Invalid\n");
          return(1);
        }
        break;
@@ -331,13 +329,13 @@ int main (int argc, char *argv[])
        }
        errno = 0; /* zero error indicator */
        if ( strlen( optarg ) > MAXSTR ) {
-         printf( _("File name is too long (max = %d)\n"), MAXSTR );
+         printf( "File name is too long (max = %d)\n", MAXSTR );
          return(1);
        }
        strcpy( opt_addbook, optarg );
        break;
      default:
-       puts (_("Option Processing Failed\n"));
+       puts ("Option Processing Failed\n");
        abort();
      }
   } /* end of getopt_long style parsing */
@@ -378,12 +376,10 @@ int main (int argc, char *argv[])
 
   /* Startup output */
   if ( !( flags & XBOARD ) && ( !opt_quiet ) && ( !opt_uci) ) {
-    printf ( _("\
-Copyright (C) %s Free Software Foundation, Inc.\n\
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
-This is free software: you are free to change and redistribute it.\n\
-There is NO WARRANTY, to the extent permitted by law.\n"),
-             "2015" );
+    printf( "Copyright (C) 2015 Free Software Foundation, Inc.\n" );
+    printf( "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n" );
+    printf( "This is free software: you are free to change and redistribute it.\n" );
+    printf( "There is NO WARRANTY, to the extent permitted by law.\n" );
   }
 
   /* If a usage statement is required output it here */
@@ -412,7 +408,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     char data[9+MAXSTR+1+4]="";
     sprintf( data, "book add %s\nquit", opt_addbook );
     SendToEngine( data );
-    SET (flags, QUIT);
   }
 
   if ( opt_easy == 0 )
@@ -492,7 +487,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       NextUserCmd();
       /* Show thinking message */
       if ((flags & THINK) && !(flags & MANUAL) && !(flags & ENDED)) {
-        if (!(flags & XBOARD)) printf(_("Thinking...\n"));
+        if (!(flags & XBOARD)) printf("Thinking...\n");
         CLEAR (flags, THINK);
       }
       /* Check if there is a new command from the engine */
@@ -507,9 +502,5 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   }
 
   dbg_close();
-
-  /* Termintate adapter and engine threads and join them */
-  TerminateAdapterEngine();
-  
   return (0);
 }

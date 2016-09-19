@@ -1,55 +1,22 @@
 # Spanish translations for gnuchess package
 # Traducciones al español para el paquete gnuchess.
-# Copyright (C) 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2013 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnuchess package.
-# Antonio Ceballos <aceballos@gmail.com>, 2013, 2014, 2015.
+# Antonio Ceballos <aceballos@gmail.com>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnuchess 6.2.2-rc1\n"
+"Project-Id-Version: gnuchess 6.1.1\n"
 "Report-Msgid-Bugs-To: bug-gnu-chess@gnu.org\n"
-"POT-Creation-Date: 2015-09-13 00:01+0200\n"
-"PO-Revision-Date: 2015-09-16 23:32+0200\n"
+"POT-Creation-Date: 2013-11-23 11:06+0100\n"
+"PO-Revision-Date: 2013-11-23 21:15+0200\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
-"Language-Team: Spanish <es@tp.org.es>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: src/main.cc:317
-#, c-format
-msgid "Memory out of Range or Invalid\n"
-msgstr "Memoria fuera de rango o no válida\n"
-
-#: src/main.cc:334
-#, c-format
-msgid "File name is too long (max = %d)\n"
-msgstr "El nombre del fichero es demasiado largo (máx. = %d)\n"
-
-#: src/main.cc:340
-msgid "Option Processing Failed\n"
-msgstr "Fallo al procesar opción\n"
-
-#: src/main.cc:381
-#, c-format
-msgid ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
-"This is free software: you are free to change and redistribute it.\n"
-"There is NO WARRANTY, to the extent permitted by law.\n"
-msgstr ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"Licencia GPLv3+: GNU GPL versión 3 o posterior\n"
-"<http://gnu.org/licenses/gpl.html>\n"
-"Esto es software libre: es usted libre de modificarlo y redistribuirlo.\n"
-"NO HAY NINGUNA GARANTÍA, dentro de los límites permitidos por la ley.\n"
-
-#: src/main.cc:494
-#, c-format
-msgid "Thinking...\n"
-msgstr "Pensando...\n"
 
 #: src/frontend/cmd.cc:101
 #, c-format
@@ -163,7 +130,7 @@ msgstr "Fallo al abrir %s para escribir: %s\n"
 #: src/frontend/cmd.cc:384
 #, c-format
 msgid "Could not create logfile, all slots occupied.\n"
-msgstr "No se pudo crear fichero de log, no hay espacio libre.\n"
+msgstr "No se pudo crear fichero de log, no hay espacio libre. \n"
 
 #: src/frontend/cmd.cc:385
 #, c-format
@@ -200,7 +167,7 @@ msgstr "Posición inicial. No hay movimientos anteriores.\n"
 #: src/frontend/cmd.cc:586 src/frontend/cmd.cc:692
 #, c-format
 msgid "Invalid filename.\n"
-msgstr "El nombre de fichero no es válido.\n"
+msgstr "Nombre de fichero inválido.\n"
 
 #: src/frontend/cmd.cc:592
 #, c-format
@@ -220,7 +187,7 @@ msgstr "La orden 'random' no está implementada actualmente.\n"
 #: src/frontend/cmd.cc:647
 #, c-format
 msgid "my rating = %d, opponent rating = %d\n"
-msgstr "mi puntuación = %d, puntuación del adversario = %d\n"
+msgstr "mi puntuación = %d, puntuación del  adversario = %d\n"
 
 #: src/frontend/cmd.cc:671 src/frontend/cmd.cc:741
 #, c-format
@@ -365,7 +332,7 @@ msgstr ""
 #: src/frontend/cmd.cc:844 src/frontend/cmd.cc:1280
 #, c-format
 msgid "Invalid move: %s\n"
-msgstr "Movimiento no válido: %s\n"
+msgstr "Movimiento inválido: %s\n"
 
 #: src/frontend/cmd.cc:862
 #, c-format
@@ -417,11 +384,11 @@ msgstr " Sale del programa."
 
 #: src/frontend/cmd.cc:971
 msgid " In analysis mode this stops analysis, otherwise it quits the program."
-msgstr " En el modo de análisis, detiene el análisis; en caso contrario, sale del programa."
+msgstr " En el modo de análisis esto detiene el análisis; en caso contrario,  sale del programa."
 
 #: src/frontend/cmd.cc:973
 msgid " Produces a help blurb corresponding to this list of commands."
-msgstr " Ofrece ayuda relacionada con esta lista de órdenes."
+msgstr " Produce una nota de ayuda correspondiente a esta lista de órdenes."
 
 #: src/frontend/cmd.cc:975
 msgid " add - compiles book.bin from a pgn book file"
@@ -437,11 +404,11 @@ msgstr " off - desactiva el uso del libro"
 
 #: src/frontend/cmd.cc:978
 msgid " worst - plays worst move from book"
-msgstr " worst - realiza la peor jugada del libro"
+msgstr " worst - juega el peor movimiento del libro"
 
 #: src/frontend/cmd.cc:979
 msgid " best - plays best move from book"
-msgstr " worst - realiza la mejor jugada del libro"
+msgstr " best - juega el mejor movimiento del libro"
 
 #: src/frontend/cmd.cc:980
 msgid " prefer - same as 'book on' (default)"
@@ -449,7 +416,7 @@ msgstr " prefer - opción predeterminada, igual que 'book on'"
 
 #: src/frontend/cmd.cc:981
 msgid " random - plays any move from book"
-msgstr " worst - realiza una jugada cualquiera del libro"
+msgstr " random - juega un movimiento cualquiera del libro"
 
 #: src/frontend/cmd.cc:983
 msgid " Prints out the version of this program."
@@ -461,18 +428,18 @@ msgstr " Retrocede un movimiento en la partida pgn cargada."
 
 #: src/frontend/cmd.cc:988
 msgid " Saves the game so far from memory to the file."
-msgstr " Guarda la posición actual de la partida en un fichero."
+msgstr " Guarda la partida en la posición actual a un fichero."
 
 #: src/frontend/cmd.cc:990
 msgid " Loads the game in the file into memory."
-msgstr " Carga en memoria la partida del fichero."
+msgstr " Carga la partida del fichero a la memoria."
 
 #: src/frontend/cmd.cc:992
 msgid ""
 " Loads the game in the file into memory, and enables\n"
 " the commands 'first', 'last', 'next', 'previous'."
 msgstr ""
-" Carga en memoria la partida del fichero y activa\n"
+" Carga la partida del fichero a la memoria, y activa\n"
 " los commandos first, last, next, previous."
 
 #: src/frontend/cmd.cc:996
@@ -552,7 +519,7 @@ msgstr ""
 
 #: src/frontend/cmd.cc:1030
 msgid " Inputs the estimated rating for computer and for its opponent."
-msgstr " Introduce la puntuación estimada del ordenador y la de su adversario."
+msgstr " Introduce la puntuación estimada del ordenador y de su adversario."
 
 #: src/frontend/cmd.cc:1032
 msgid " Sets up a new game (i.e. pieces in original positions)."
@@ -619,7 +586,7 @@ msgstr " Carga en memoria una posición de un fichero en formato EPD."
 
 #: src/frontend/cmd.cc:1059
 msgid " Saves game position into EPD format from memory to disk."
-msgstr " Guarda la posición de una partida en un fichero en formato EPD."
+msgstr " Guarda la posición de una partida a un fichero en formato EPD."
 
 #: src/frontend/cmd.cc:1061
 msgid " Switches side to move."
@@ -639,7 +606,7 @@ msgstr " Retrocede un movimiento."
 
 #: src/frontend/cmd.cc:1070
 msgid " Displays command line syntax."
-msgstr " Muestra la sintaxis de la línea de órdenes."
+msgstr " Muestra la sintaxis de la línea de comando."
 
 #: src/frontend/cmd.cc:1072
 msgid " board - displays the current board"
@@ -687,7 +654,7 @@ msgstr " capture - lee un fichero epd y muestra las capturas válidas que contie
 
 #: src/frontend/cmd.cc:1084
 msgid " movegenspeed - tests speed of move generator"
-msgstr " movegenspeed - prueba la velocidad del generador de movimientos"
+msgstr " movegenspeed - prueva la velocidad del generador de movimientos"
 
 #: src/frontend/cmd.cc:1085
 msgid " capturespeed - tests speed of capture move generator"
@@ -726,20 +693,3 @@ msgstr ""
 #, c-format
 msgid "List of commands: (help COMMAND to get more help)\n"
 msgstr "Lista de órdenes: (help ORDEN para obtener más ayuda)\n"
-
-#: src/frontend/engine.cc:247
-msgid "Black"
-msgstr "Negras"
-
-#: src/frontend/engine.cc:247
-msgid "White"
-msgstr "Blancas"
-
-#: src/frontend/engine.cc:333
-#, c-format
-msgid ""
-"\n"
-"My move is : %s\n"
-msgstr ""
-"\n"
-"Mi jugada : %s\n"

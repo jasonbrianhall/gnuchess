@@ -2,7 +2,7 @@
 
    GNU Chess protocol adapter
 
-   Copyright (C) 2001-2015 Free Software Foundation, Inc.
+   Copyright (C) 2001-2011 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,7 +26,6 @@
 #include <cctype>
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>
 
 #include "board.h"
 #include "colour.h"
@@ -42,31 +41,12 @@ namespace adapter {
 
 // const char * StartFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w HAha - 0 1";
 const char * StartFen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-static const int StringSize = 4096;
 
 // variables
 
 static const bool Strict = false;
 
 // functions
-
-// fen_fatal()
-
-void fen_fatal(const char format[], int pos, const char fen[])
-{
-   char errorMsg[StringSize]="";
-   char pointerStr[StringSize]="";
-   for ( int i=0; i<pos; ++i ) {
-      strcat( pointerStr, " " );
-   }
-   strcat( pointerStr, "*" );
-   sprintf( errorMsg, format, pos );
-   strcat( errorMsg, fen );
-   strcat( errorMsg, "\n" );
-   strcat( errorMsg, pointerStr );
-   strcat( errorMsg, "\n" );
-   my_fatal( errorMsg );
-}
 
 // board_from_fen()
 
@@ -101,7 +81,7 @@ bool board_from_fen(board_t * board, const char string[]) {
          if (c >= '1' && c <= '8') { // empty square(s)
 
             len = c - '0';
-            if (file + len > 8) fen_fatal("board_from_fen(): bad FEN (a file was expected at pos=%d)\n",pos,string);
+            if (file + len > 8) my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
 
             for (i = 0; i < len; i++) {
                board->square[sq++] = Empty;
@@ -111,7 +91,7 @@ bool board_from_fen(board_t * board, const char string[]) {
          } else { // piece
 
             piece = piece_from_char(c);
-            if (piece == PieceNone256) fen_fatal("board_from_fen(): bad FEN (a piece was expected at pos=%d)\n",pos,string);
+            if (piece == PieceNone256) my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
 
             if (piece_is_king(piece)) king_pos[piece_colour(piece)] = sq;
 
@@ -123,14 +103,14 @@ bool board_from_fen(board_t * board, const char string[]) {
       }
 
       if (rank > 0) {
-         if (c != '/') fen_fatal("board_from_fen(): bad FEN ('/' was expected at pos=%d)\n",pos,string);
+         if (c != '/') my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
          c = string[++pos];
      }
    }
 
    // active colour
 
-   if (c != ' ') fen_fatal("board_from_fen(): bad FEN (a space was expected at pos=%d)\n",pos,string);
+   if (c != ' ') my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
    c = string[++pos];
 
    switch (c) {
@@ -141,7 +121,7 @@ bool board_from_fen(board_t * board, const char string[]) {
       board->turn = Black;
       break;
    default:
-      fen_fatal("board_from_fen(): bad FEN (the active colour ('w' or 'b') was expected at pos=%d)\n",pos,string);
+      my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
       break;
    }
 
@@ -149,7 +129,7 @@ bool board_from_fen(board_t * board, const char string[]) {
 
    // castling
 
-   if (c != ' ') fen_fatal("board_from_fen(): bad FEN (a space was expected at pos=%d)\n",pos,string);
+   if (c != ' ') my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
    c = string[++pos];
 
    board->castle[White][SideH] = SquareNone;
@@ -231,7 +211,7 @@ bool board_from_fen(board_t * board, const char string[]) {
 
          } else {
 
-            fen_fatal("board_from_fen(): bad FEN (invalid castling availability at pos=%d)\n",pos,string);
+            my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
          }
 
          c = string[++pos];
@@ -241,7 +221,7 @@ bool board_from_fen(board_t * board, const char string[]) {
 
    // en-passant
 
-   if (c != ' ') fen_fatal("board_from_fen(): bad FEN (a space was expected at pos=%d)\n",pos,string);
+   if (c != ' ') my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
    c = string[++pos];
 
    if (c == '-') { // no en-passant
@@ -251,11 +231,11 @@ bool board_from_fen(board_t * board, const char string[]) {
 
    } else {
 
-      if (c < 'a' || c > 'h') fen_fatal("board_from_fen(): bad FEN (invalid en-passant rank at pos=%d)\n",pos,string);
+      if (c < 'a' || c > 'h') my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
       file = file_from_char(c);
       c = string[++pos];
 
-      if (c < '1' || c > '8') fen_fatal("board_from_fen(): bad FEN (invalid en-passant file at pos=%d)\n",pos,string);
+      if (c < '1' || c > '8') my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
       rank = rank_from_char(c);
       c = string[++pos];
 
@@ -271,13 +251,13 @@ bool board_from_fen(board_t * board, const char string[]) {
 
    if (c != ' ') {
       if (!Strict) goto update;
-      fen_fatal("board_from_fen(): bad FEN (a space was expected at pos=%d)\n",pos,string);
+      my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
    }
    c = string[++pos];
 
    if (!isdigit(c)) {
       if (!Strict) goto update;
-      fen_fatal("board_from_fen(): bad FEN (a digit for the halfmove clock was expected at pos=%d)\n",pos,string);
+      my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
    }
 
    board->ply_nb = atoi(&string[pos]);
@@ -289,13 +269,13 @@ bool board_from_fen(board_t * board, const char string[]) {
 
    if (c != ' ') {
       if (!Strict) goto update;
-      fen_fatal("board_from_fen(): bad FEN (a space was expected at pos=%d)\n",pos,string);
+      my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
    }
    c = string[++pos];
 
    if (!isdigit(c)) {
       if (!Strict) goto update;
-      fen_fatal("board_from_fen(): bad FEN (a digit for the fullmove number was expected at pos=%d)\n",pos,string);
+      my_fatal("board_from_fen(): bad FEN (pos=%d)\n",pos);
    }
 
    board->move_nb = atoi(&string[pos]) - 1;

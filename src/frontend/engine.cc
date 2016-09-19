@@ -2,7 +2,7 @@
 
    GNU Chess frontend
 
-   Copyright (C) 2001-2015 Free Software Foundation, Inc.
+   Copyright (C) 2001-2011 Free Software Foundation, Inc.
 
    GNU Chess is based on the two research programs
    Cobalt by Chua Kong-Sian and Gazebo by Stuart Cracraft.
@@ -36,9 +36,6 @@
 
 #include "common.h"
 #include "components.h"
-#include "gettext.h"
-
-#define _(str) gettext (str)
 
 /* Message to be sent to the engine */
 char inputstr[BUF_SIZE]="";
@@ -244,7 +241,7 @@ void ShowPrompt( void )
   char prompt[MAXSTR] = "";
   if ( showprompt && !(flags & XBOARD) ) {
     sprintf(prompt,"%s (%d) : ",
-            RealSide ? _("Black") : _("White"),
+            RealSide ? "Black" : "White",
             (RealGameCnt+1)/2 + 1 );
     fprintf( stdout, "%s", prompt );
     fflush( stdout );
@@ -330,7 +327,7 @@ void NextEngineCmd( void )
 	  if ( !(flags & XBOARD) ) {
 		  ShowBoard();
                   dbg_printf("USER <: My move is : %s\n", SANmv);
-		  printf( _("\nMy move is : %s\n"), SANmv );
+		  printf( "\nMy move is : %s\n", SANmv );
                   fflush( stdout );
 	  } else {
                   dbg_printf("USER <: %d. ... %s\n", GameCnt/2 + 1, enginemovestr );
@@ -462,7 +459,6 @@ void SolvePosition( char move[], const char position[] )
   char engineinput[BUF_SIZE]="";
   int solved = 0;
 
-  /* TODO Translatable or not? */
   printf( "\nSolve position:\n\t%s\n", position );
 
   /* Send position to adapter/engine. */
@@ -523,9 +519,6 @@ void ForwardUserInputToEngine( void )
     nread = read( STDIN_FILENO, userinputaux, BUF_SIZE );
     /* Send the data to the engine */
     assert( nread+1 < BUF_SIZE-1 );
-    if ( strcmp(userinputaux,"quit") == 0 || strcmp(userinputaux,"quit\n") == 0 ) {
-	  SET (flags, QUIT);
-    }
     userinputaux[nread] = '\n';
     userinputaux[nread+1] = '\0';
     int outError=0;

@@ -1,15 +1,15 @@
 # Vietnamese translations for gnuchess package
 # Bản dịch tiếng Việt cho gói gnuchess.
-# Copyright (C) 2015 Free Software Foundation, Inc.
+# Copyright (C) 2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnuchess package.
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2013-2014, 2015.
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2013-2014.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnuchess 6.2.2-rc1\n"
+"Project-Id-Version: gnuchess-6.1.1\n"
 "Report-Msgid-Bugs-To: bug-gnu-chess@gnu.org\n"
-"POT-Creation-Date: 2015-09-13 00:01+0200\n"
-"PO-Revision-Date: 2015-09-16 07:38+0700\n"
+"POT-Creation-Date: 2013-11-23 11:06+0100\n"
+"PO-Revision-Date: 2014-07-21 09:03+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
 "Language: vi\n"
@@ -17,39 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
-
-#: src/main.cc:317
-#, c-format
-msgid "Memory out of Range or Invalid\n"
-msgstr "Bộ nhớ nằm ngoài phạm vi hoặc không hợp lệ\n"
-
-#: src/main.cc:334
-#, c-format
-msgid "File name is too long (max = %d)\n"
-msgstr "Tên tập tin quá dài (tối đa = %d)\n"
-
-#: src/main.cc:340
-msgid "Option Processing Failed\n"
-msgstr "Gặp lỗi khi xử lý tùy chọn\n"
-
-#: src/main.cc:381
-#, c-format
-msgid ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
-"This is free software: you are free to change and redistribute it.\n"
-"There is NO WARRANTY, to the extent permitted by law.\n"
-msgstr ""
-"Tác quyền © %s Tổ chức Phần mềm Tự do.\n"
-"Giấy Phép Công Cộng GNU (GPL), phiên bản 3 hay sau <http://gnu.org/licenses/gpl.html>\n"
-"Đây là phần mềm tự do: bạn có quyền thay đổi và phát hành lại nó.\n"
-"KHÔNG CÓ BẢO HÀNH GÌ CẢ, với điều kiện được pháp luật cho phép.\n"
-
-#: src/main.cc:494
-#, c-format
-msgid "Thinking...\n"
-msgstr "Đang nghĩ…\n"
 
 #: src/frontend/cmd.cc:101
 #, c-format
@@ -250,7 +217,7 @@ msgstr "Giới-hạn-giờ mới = %g\n"
 msgid ""
 "Usage: %s [OPTION]...\n"
 "\n"
-msgstr "Cách dùng: %s [TÙY-CHỌN]…\n"
+msgstr "Cách dùng: %s [TÙY-CHỌN]...\n"
 
 #: src/frontend/cmd.cc:752
 msgid ""
@@ -262,7 +229,7 @@ msgstr ""
 
 #: src/frontend/cmd.cc:754
 msgid "Options:\n"
-msgstr "Các tùy chọn:\n"
+msgstr "Tùy chọn:\n"
 
 #: src/frontend/cmd.cc:755
 msgid " -h, --help         display this help and exit\n"
@@ -306,9 +273,7 @@ msgstr " -u, --uci          bật giao thức UCI (ứng xử như là bộ máy
 
 #: src/frontend/cmd.cc:775
 msgid " -M size, --memory=size   specify memory usage in MB for hashtable\n"
-msgstr ""
-" -M cỡ, --memory=cỡ       chỉ định dung lượng bộ nhớ dành cho bảng\n"
-"                           băm tính theo MB\n"
+msgstr " -M cỡ, --memory=cỡ chỉ định dung lượng bộ nhớ dành cho bảng băm tính theo MB\n"
 
 #: src/frontend/cmd.cc:777
 msgid " -a filename, --addbook=filename   compile book.bin from pgn book 'filename'\n"
@@ -324,8 +289,8 @@ msgid ""
 " for backward compatibility.\n"
 "\n"
 msgstr ""
-" Các tùy chọn xboard và post được chấp nhận mà không có gạch\n"
-" nối ở đầu để mà tương thích ngược.\n"
+" Các tùy chọn xboard và post được chấp nhận mà không có gạch nối ở đầu\n"
+" để mà tương thích ngược.\n"
 "\n"
 
 #: src/frontend/cmd.cc:787
@@ -723,20 +688,3 @@ msgstr ""
 #, c-format
 msgid "List of commands: (help COMMAND to get more help)\n"
 msgstr "Danh sách các câu lệnh: (help LỆNH để có thêm thông tin)\n"
-
-#: src/frontend/engine.cc:247
-msgid "Black"
-msgstr "Đen"
-
-#: src/frontend/engine.cc:247
-msgid "White"
-msgstr "Trắng"
-
-#: src/frontend/engine.cc:333
-#, c-format
-msgid ""
-"\n"
-"My move is : %s\n"
-msgstr ""
-"\n"
-"Nước đi của tôi là: %s\n"
